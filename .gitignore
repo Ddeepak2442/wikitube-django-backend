@@ -1,0 +1,3 @@
+django-backend
+backend/.env
+db.sqlite3
