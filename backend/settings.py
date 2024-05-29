@@ -10,7 +10,7 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = os.environ.get('DEBUG') == 'True'
+DEBUG = os.environ.get('DEBUG') == 'False'
 
 ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
