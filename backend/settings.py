@@ -99,6 +99,9 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
+ADMIN_SITE_HEADER = 'WIKITUBE ADMIN'
+ADMIN_SITE_TITLE = 'WIKITUBE'
+ADMIN_INDEX_TITLE = 'Welcome to WIKITUBE'
 
 LANGUAGE_CODE = 'en-us'
 
