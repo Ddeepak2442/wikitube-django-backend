@@ -2,10 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import UserProfile
 
-from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import UserProfile
-
 class SignUpSerializer(serializers.ModelSerializer):
     date_of_birth = serializers.DateField(required=True)
     gender = serializers.ChoiceField(choices=UserProfile.GENDER_CHOICES, required=True)
