@@ -1,7 +1,7 @@
 # core/admin.py
 from django.contrib.admin import AdminSite
 from django.contrib import admin
-from .models import UserProfile, Account
+from .models import UserProfile
 
 class CustomAdminSite(AdminSite):
     site_header = 'WIKITUBE ADMIN'
@@ -11,10 +11,6 @@ class CustomAdminSite(AdminSite):
 custom_admin_site = CustomAdminSite(name='custom_admin')
 
 class UserProfileAdmin(admin.ModelAdmin):
-    pass
-
-class AccountAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('user','date_of_birth','gender',)  # Specify fields to display in admin list view
 
 custom_admin_site.register(UserProfile, UserProfileAdmin)
-custom_admin_site.register(Account, AccountAdmin)

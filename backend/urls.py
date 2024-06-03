@@ -21,8 +21,8 @@ from account.admin import custom_admin_site
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView
 
 urlpatterns = [
-    path('', custom_admin_site.urls),
-    path('', admin.site.urls),
+    path('custom_admin/', custom_admin_site.urls),
+    path('admin/', admin.site.urls),
     path('api/', include('account.urls')),
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/token/verify/', TokenVerifyView.as_view())
