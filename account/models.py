@@ -13,4 +13,4 @@ class UserProfile(models.Model):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.first_name

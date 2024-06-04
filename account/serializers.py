@@ -21,7 +21,6 @@ class SignUpSerializer(serializers.ModelSerializer):
         gender = validated_data.pop('gender')
         email = validated_data['email']
         user = User.objects.create_user(
-            username=email,
             email=email,
             password=validated_data['password'],
             first_name=validated_data['first_name'],
@@ -40,5 +39,5 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'username', 'userprofile')
+        fields = ('first_name', 'last_name', 'email',  'userprofile')
  
