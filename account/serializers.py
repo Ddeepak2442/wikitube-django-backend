@@ -8,7 +8,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'password', 'date_of_birth', 'gender')
+        fields = ('first_name', 'last_name', 'email','username', 'password', 'date_of_birth', 'gender')
         extra_kwargs = {
             'first_name': {'required': True, 'allow_blank': False},
             'last_name': {'required': True, 'allow_blank': False},
@@ -21,6 +21,7 @@ class SignUpSerializer(serializers.ModelSerializer):
         gender = validated_data.pop('gender')
         email = validated_data['email']
         user = User.objects.create_user(
+            username=email,
             email=email,
             password=validated_data['password'],
             first_name=validated_data['first_name'],

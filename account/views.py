@@ -14,7 +14,7 @@ def register(request):
     user_serializer = SignUpSerializer(data=data)
 
     if user_serializer.is_valid():
-        if not User.objects.filter(email=data['email']).exists():
+        if not User.objects.filter(username=data['email']).exists():
             user_serializer.save()
             return Response({'message': 'User registered.'}, status=status.HTTP_201_CREATED)
         else:
@@ -36,7 +36,6 @@ def updateUser(request):
 
     user.first_name = data.get('first_name', user.first_name)
     user.last_name = data.get('last_name', user.last_name)
-    #user.username = data.get('email', user.username)
     user.email = data.get('email', user.email)
 
     if data.get('password'):
