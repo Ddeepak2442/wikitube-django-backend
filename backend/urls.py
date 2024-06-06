@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from account.admin import custom_admin_site
 
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView, TokenRefreshView
 
 urlpatterns = [
     path('custom_admin/', custom_admin_site.urls),
@@ -26,7 +26,8 @@ urlpatterns = [
     path('api/', include('account.urls')),
     path('api/', include('flashcard.urls')),
     path('api/token/', TokenObtainPairView.as_view()),
-    path('api/token/verify/', TokenVerifyView.as_view())
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view()),
 ]
 
 handler404 = 'utils.error_views.handler404'
