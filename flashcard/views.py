@@ -1,10 +1,10 @@
-# flashcard/views.py
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Prompt
 from .serializers import PromptSerializer
 from django.contrib.auth.models import User
+from urllib.parse import unquote
 
 
 
@@ -37,3 +37,17 @@ def create_prompt(request):
 
     return Response({'error': 'Invalid request method.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+
+
+@api_view(['GET'])
+def get_prompts_by_wikipedia_link(request):
+    wikipedia_link = request.query_params.get('wikipedia_link', None)
+    if wikipedia_link is not None:
+        wikipedia_link = wikipedia_link.strip()  # Remove leading/trailing whitespace
+        wikipedia_link = unquote(wikipedia_link)  # Decode URL-encoded characters
+        prompts = Prompt.objects.filter(Wikipedia_link=wikipedia_link)
+        if not prompts:
+            return Response({"error": "No prompts found for the given Wikipedia_link"}, status=status.HTTP_404_NOT_FOUND)
+        serializer = PromptSerializer(prompts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response({"error": "Wikipedia_link parameter is required"}, status=status.HTTP_400_BAD_REQUEST)

@@ -22,7 +22,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView,
 
 urlpatterns = [
     path('custom_admin/', custom_admin_site.urls),
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     path('api/', include('account.urls')),
     path('api/', include('flashcard.urls')),
     path('api/token/', TokenObtainPairView.as_view()),
