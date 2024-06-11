@@ -12,7 +12,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = os.environ.get('DEBUG') == 'False'
 
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1',]
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -125,3 +126,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = "backends.custom_email_backend.CustomEmailBackend"
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "your_default_email@gmail.com")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "your_default_password")
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "True") == "True"
+DEFAULT_FROM_EMAIL ="nucleus.edu.info@gmail.com"
