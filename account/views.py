@@ -179,8 +179,8 @@ def verify_email(request, token):
     token_obj.delete()  # Optionally delete the token once used
 
     #return Response({'message': 'Email verified successfully'}, status=status.HTTP_200_OK)
-    #return redirect ( 'http://localhost:3000/login')
-    return redirect ( '{current_site}/login')
+    return redirect ( 'https://www.wikitube.io/login')
+    
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def currentUser(request):
