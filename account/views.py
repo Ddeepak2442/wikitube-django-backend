@@ -25,8 +25,9 @@ def register(request):
             user = user_serializer.save()
             token = EmailVerificationToken.objects.create(user=user)
             current_site = get_current_site(request).domain
-            
-            verification_link = f"https://{current_site}{reverse('verify-email', kwargs={'token': token.token})}"
+            login = current_site/login
+            #verification_link = f"https://{current_site}{reverse('verify_email' ,kwargs={'token': token.token})}"
+            verification_link = f"https://{login}{reverse(kwargs={'token': token.token})}"
             send_mail(
                 'Verify your email address',
                 f'Please click the link to verify your email: {verification_link}',
