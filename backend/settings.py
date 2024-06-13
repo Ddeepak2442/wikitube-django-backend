@@ -125,6 +125,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 
+AUTHENTICATION_BACKENDS = [
+    'backends.custom_auth_backend.CustomEmailBackend',  # Custom authentication backend
+    'django.contrib.auth.backends.ModelBackend',  # Keep the default backend
+]
+
+# settings.py
+FRONTEND_URL = 'http://localhost:3000'  # Or your frontend URL
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = "backends.custom_email_backend.CustomEmailBackend"
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
