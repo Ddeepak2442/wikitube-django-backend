@@ -123,5 +123,5 @@ def password_reset_confirm(request, uidb64, token):
     serializer = PasswordResetSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
-        return redirect(f'{settings.FRONTEND_URL}/reset-password-success')
+        return redirect(f'{settings.FRONTEND_URL}reset-password-success')
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
